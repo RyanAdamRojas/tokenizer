@@ -1,8 +1,9 @@
-
 #include <stdio.h>
+#include "tokenizer.h"
 
-int areEqual(const char *str1, const char *str2) {
-    while (*str1 != '\0' && *str2 != '\0') {
+int areEqual(const char *str1, const char *str2)
+{
+    while (*str1 != '\0' && *str2 != '\0'){
         if (*str1 != *str2) {
             return 0; // Not equal
         }
@@ -12,7 +13,8 @@ int areEqual(const char *str1, const char *str2) {
     return (*str1 == '\0' && *str2 == '\0'); // Equal if both strings ended
 }
 
-int main() {
+int main(void)
+{
   int looping = 1;
   char userInput[100];
   printf("Hello, friend. Welcome to TOKENIZER\n");
@@ -28,7 +30,6 @@ int main() {
       }
       printf("You entered: %s\n", userInput);
     }
-
     return 0;
 }
 
