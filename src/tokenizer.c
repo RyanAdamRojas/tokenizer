@@ -2,23 +2,14 @@
 #include <stdlib.h>
 #include "tokenizer.h"
 
-/* Return true (non-zero) if c is a whitespace characer
-   ('\t' or ' ').  
-   Zero terminators are not printable (therefore false) */
 int space_char(char c){
   return (c == '\t' || c == ' ');
 }
 
-/* Return true (non-zero) if c is a non-whitespace 
-   character (not tab or space).  
-   Zero terminators are not printable (therefore false) */ 
 int non_space_char(char c){
   return !space_char(c);
 }
 
-/* Returns a pointer to the first character of the next 
-   space-separated token in zero-terminated str.  Return a zero pointer if 
-   str does not contain any tokens. */
 char *token_start(char *str){
  start:
   if(*str == ' '){
@@ -32,7 +23,6 @@ char *token_start(char *str){
   return str;
 }
 
-/* Returns a pointer terminator char following *token */
 char *token_terminator(char *token){
  start:
   if(*token != '\0'){
@@ -42,7 +32,6 @@ char *token_terminator(char *token){
   return token;
 }
 
-/* Counts the number of tokens in the string argument. */
 int count_tokens(char *str){
   int count = 0;
   
@@ -58,8 +47,6 @@ int count_tokens(char *str){
   return ++count;  
 }
 
-/* Returns a fresly allocated new zero-terminated string 
-   containing <len> chars from <inStr> */
 char *copy_str(char *inStr, short len){
   // Declare output string with zero termination
   char *outString = (char*) malloc((len+1) * sizeof(char));
@@ -79,14 +66,6 @@ char *copy_str(char *inStr, short len){
   return p_outStringStart;
 }
 
-/* Returns a freshly allocated zero-terminated vector of freshly allocated
-   space-separated tokens from zero-terminated str.
-   For example, tokenize("hello world string") would result in:
-   tokens[0] = "hello"
-   tokens[1] = "world"
-   tokens[2] = "string" 
-   tokens[3] = 0
-*/
 char **tokenize(char* str) {
   // Create array
   char **tokens = (char **)malloc((count_tokens(str) + 1) * sizeof(char *));
@@ -101,7 +80,6 @@ char **tokenize(char* str) {
   return tokens;
   }
 
-/* Prints all tokens. */
 void print_tokens(char **tokens) {
   int i = 0;
   while(tokens[i] != NULL) {
@@ -110,7 +88,6 @@ void print_tokens(char **tokens) {
   }
 }
 
-/* Frees all tokens and the vector containing themx. */
 void free_tokens(char **tokens){
     int i = 0;
     while(tokens[i] != NULL){
